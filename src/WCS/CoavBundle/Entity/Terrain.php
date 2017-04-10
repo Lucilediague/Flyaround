@@ -7,6 +7,14 @@ namespace WCS\CoavBundle\Entity;
  */
 class Terrain
 {
+    public function _toString()
+{
+    return $this->name;
+}
+
+
+// YAML GENERATED CODE
+
     /**
      * @var int
      */
@@ -196,5 +204,50 @@ class Terrain
     {
         return $this->country;
     }
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $departures;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add departure
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $departure
+     *
+     * @return Terrain
+     */
+    public function addDeparture(\WCS\CoavBundle\Entity\Flight $departure)
+    {
+        $this->departures[] = $departure;
+
+        return $this;
+    }
+
+    /**
+     * Remove departure
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $departure
+     */
+    public function removeDeparture(\WCS\CoavBundle\Entity\Flight $departure)
+    {
+        $this->departures->removeElement($departure);
+    }
+
+    /**
+     * Get departures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartures()
+    {
+        return $this->departures;
+    }
+}

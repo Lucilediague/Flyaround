@@ -167,5 +167,79 @@ class Flight
     {
         return $this->takeofTime;
     }
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $flights;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->flights = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add flight
+     *
+     * @param \WCS\CoavBundle\Entity\Reservation $flight
+     *
+     * @return Flight
+     */
+    public function addFlight(\WCS\CoavBundle\Entity\Reservation $flight)
+    {
+        $this->flights[] = $flight;
+
+        return $this;
+    }
+
+    /**
+     * Remove flight
+     *
+     * @param \WCS\CoavBundle\Entity\Reservation $flight
+     */
+    public function removeFlight(\WCS\CoavBundle\Entity\Reservation $flight)
+    {
+        $this->flights->removeElement($flight);
+    }
+
+    /**
+     * Get flights
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFlights()
+    {
+        return $this->flights;
+    }
+    /**
+     * @var \WCS\CoavBundle\Entity\PlaneModel
+     */
+    private $plane;
+
+
+    /**
+     * Set plane
+     *
+     * @param \WCS\CoavBundle\Entity\PlaneModel $plane
+     *
+     * @return Flight
+     */
+    public function setPlane(\WCS\CoavBundle\Entity\PlaneModel $plane = null)
+    {
+        $this->plane = $plane;
+
+        return $this;
+    }
+
+    /**
+     * Get plane
+     *
+     * @return \WCS\CoavBundle\Entity\PlaneModel
+     */
+    public function getPlane()
+    {
+        return $this->plane;
+    }
+}

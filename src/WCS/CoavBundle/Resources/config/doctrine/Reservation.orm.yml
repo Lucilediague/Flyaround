@@ -17,3 +17,9 @@ WCS\CoavBundle\Entity\Reservation:
             type: integer
             nullable: true
     lifecycleCallbacks: {  }
+
+
+    manyToOne:
+        flight:
+            targetEntity: WCS\CoavBundle\Entity\Flight
+            inversedBy: flights
