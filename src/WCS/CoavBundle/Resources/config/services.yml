@@ -2,3 +2,47 @@ services:
 #    wcs_coav.example:
 #        class: WCS\CoavBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+# src/WCS/CoavBundle/Resources/config/services.yml
+
+services:
+    app.admin.terrain:
+        class: WCS\CoavBundle\Admin\TerrainAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Vol", label: "Terrain" }
+        arguments:
+            - ~
+            - WCS\CoavBundle\Entity\Terrain
+            - ~
+    app.admin.flight:
+            class: WCS\CoavBundle\Admin\FlightAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Vol", label: "Flight" }
+            arguments:
+                - ~
+                - WCS\CoavBundle\Entity\Flight
+                - ~
+    app.admin.reservation:
+                class: WCS\CoavBundle\Admin\ReservationAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, group: "Client", label: "Reservation" }
+                arguments:
+                    - ~
+                    - WCS\CoavBundle\Entity\Reservation
+                    - ~
+    app.admin.user:
+                    class: WCS\CoavBundle\Admin\UserAdmin
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, group: "Client", label: "User" }
+                    arguments:
+                        - ~
+                        - WCS\CoavBundle\Entity\User
+                        - ~
+    app.admin.planemodel:
+                    class: WCS\CoavBundle\Admin\PlanemodelAdmin
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, group: "Vol", label: "PlaneModel" }
+                    arguments:
+                        - ~
+                        - WCS\CoavBundle\Entity\PlaneModel
+                        - ~

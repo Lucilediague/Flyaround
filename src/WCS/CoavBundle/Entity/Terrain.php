@@ -215,6 +215,8 @@ class Terrain
     public function __construct()
     {
         $this->departures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->arrivals = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -249,5 +251,41 @@ class Terrain
     public function getDepartures()
     {
         return $this->departures;
+    }
+
+    private $arrivals;
+
+    /**
+     * Add arrival
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $arrival
+     *
+     * @return Terrain
+     */
+    public function addArrival(\WCS\CoavBundle\Entity\Flight $arrival)
+    {
+        $this->arrivals[] = $arrival;
+
+        return $this;
+    }
+
+    /**
+     * Remove arrival
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $departure
+     */
+    public function removeArrival(\WCS\CoavBundle\Entity\Flight $arrival)
+    {
+        $this->arrivals->removeElement($arrival);
+    }
+
+    /**
+     * Get arrivals
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArrivals()
+    {
+        return $this->arrivals;
     }
 }
